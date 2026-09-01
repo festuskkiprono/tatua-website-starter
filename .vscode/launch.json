@@ -7,8 +7,8 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open about.html",
-            "file": "c:\\Users\\ADMIN\\Desktop\\RIGHT\\Internship\\UI\\cloned_repo\\tatua-website-starter\\pages\\about.html"
+            "name": "Open contact.html",
+            "file": "c:\\Users\\ADMIN\\Desktop\\RIGHT\\Internship\\UI\\cloned_repo\\tatua-website-starter\\pages\\contact.html"
         }
     ]
 }
