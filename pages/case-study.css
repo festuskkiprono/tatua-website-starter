@@ -1,0 +1,377 @@
+/* case-studies.css */
+
+:root {
+    --color-bg: #FFFFFF;
+    --color-text: #1A1D23;
+    --color-muted: #5A6472;
+    --color-accent: #2554C7;
+    --color-border: #E8EAED;
+    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-body);
+    color: var(--color-text);
+    line-height: 1.5;
+    background: var(--color-bg);
+}
+
+/* ---------- Header / Nav ---------- */
+
+header {
+    border-bottom: 1px solid var(--color-border);
+    padding: 1.25rem 2rem;
+}
+
+header nav {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header nav>a {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul a {
+    color: var(--color-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+
+header nav ul a:hover,
+header nav ul a:focus {
+    color: var(--color-accent);
+}
+
+/* ---------- Breadcrumb ---------- */
+
+nav[aria-label="breadcrumb"] {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 2rem 0;
+}
+
+nav[aria-label="breadcrumb"] ol {
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+
+nav[aria-label="breadcrumb"] li:not(:last-child)::after {
+    content: "›";
+    margin-left: 0.5rem;
+    color: var(--color-border);
+}
+
+nav[aria-label="breadcrumb"] a {
+    color: var(--color-muted);
+    text-decoration: none;
+}
+
+nav[aria-label="breadcrumb"] a:hover,
+nav[aria-label="breadcrumb"] a:focus {
+    color: var(--color-accent);
+}
+
+nav[aria-label="breadcrumb"] li[aria-current="page"] {
+    color: var(--color-text);
+}
+
+/* ---------- Main sections ---------- */
+
+main {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+section {
+    padding: 3rem 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+section:last-of-type {
+    border-bottom: none;
+}
+
+section h2 {
+    font-size: 1.75rem;
+    margin: 0 0 1.5rem;
+}
+
+/* ---------- Page header ---------- */
+
+#page-header h1 {
+    font-size: 2.25rem;
+    margin: 0 0 0.5rem;
+}
+
+#page-header .tagline {
+    font-size: 1.1rem;
+    color: var(--color-muted);
+    margin: 0 0 1rem;
+}
+
+#page-header>p:not(.tagline) {
+    max-width: 65ch;
+    color: var(--color-muted);
+}
+
+/* ---------- Case studies ---------- */
+
+.case-study {
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.case-study:last-child {
+    margin-bottom: 0;
+}
+
+.case-study h3 {
+    font-size: 1.3rem;
+    margin: 0 0 1rem;
+}
+
+.case-study .company-info {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.3rem 1rem;
+    margin: 0 0 1.5rem;
+    font-size: 0.9rem;
+}
+
+.case-study .company-info dt {
+    color: var(--color-muted);
+}
+
+.case-study .company-info dd {
+    margin: 0;
+}
+
+.case-study h4 {
+    font-size: 1rem;
+    margin: 1.25rem 0 0.5rem;
+    color: var(--color-accent);
+}
+
+.case-study>p {
+    color: var(--color-muted);
+    margin: 0;
+    max-width: 70ch;
+}
+
+.case-study .results {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 0.5rem 1rem;
+    margin: 0;
+}
+
+.case-study .results dt {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.case-study .results dd {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+.case-study blockquote {
+    margin: 1.5rem 0 0;
+    padding: 1rem 1.25rem;
+    border-left: 3px solid var(--color-accent);
+    background: #F7F8FA;
+    font-style: italic;
+}
+
+.case-study blockquote p {
+    margin: 0 0 0.5rem;
+    color: var(--color-text);
+}
+
+.case-study blockquote cite {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+
+/* ---------- Tables ---------- */
+
+.table-desc {
+    font-size: 0.9rem;
+    color: var(--color-muted);
+    margin: 0 0 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+caption {
+    text-align: left;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--color-text);
+}
+
+thead th {
+    background: #F7F8FA;
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid var(--color-border);
+    font-size: 0.85rem;
+}
+
+tbody th,
+tbody td {
+    padding: 0.65rem 1rem;
+    border-bottom: 1px solid var(--color-border);
+    text-align: left;
+}
+
+tbody th {
+    color: var(--color-text);
+    font-weight: 600;
+}
+
+tbody td {
+    color: var(--color-muted);
+}
+
+tbody tr:last-child th,
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* ---------- ROI ---------- */
+
+#roi dl {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem 2rem;
+    margin-top: 1.5rem;
+}
+
+#roi dt {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+#roi dd {
+    margin: 0;
+    color: var(--color-muted);
+}
+
+/* ---------- Testimonials ---------- */
+
+#testimonials ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+#testimonials blockquote {
+    margin: 0;
+    padding: 1.25rem;
+    border-left: 3px solid var(--color-accent);
+    background: #F7F8FA;
+    height: 100%;
+}
+
+#testimonials blockquote p {
+    font-style: italic;
+    margin: 0 0 0.75rem;
+    font-size: 0.95rem;
+}
+
+#testimonials cite {
+    font-style: normal;
+    font-size: 0.85rem;
+    color: var(--color-muted);
+}
+
+/* ---------- Footer ---------- */
+
+footer {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem;
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+    color: var(--color-muted);
+}
+
+footer ul {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+footer a {
+    color: var(--color-muted);
+    text-decoration: none;
+}
+
+footer a:hover,
+footer a:focus {
+    color: var(--color-accent);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 700px) {
+    header nav {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    #roi dl {
+        grid-template-columns: 1fr;
+    }
+
+    #testimonials ul {
+        grid-template-columns: 1fr;
+    }
+}
