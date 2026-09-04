@@ -8,7 +8,7 @@
             "type": "chrome",
             "request": "launch",
             "name": "Open home.html",
-            "file": "c:\\Users\\ADMIN\\Desktop\\RIGHT\\Internship\\UI\\cloned_repo\\tatua-website-starter\\pages\\home.html"
+            "file": "c:\\Users\\ADMIN\\Desktop\\RIGHT\\Internship\\UI\\cloned_repo\\tatua-website-starter\\pages\\newsletter-email.html"
         }
     ]
 }
