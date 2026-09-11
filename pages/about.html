@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="purple" data-mode="light">
 
 <head>
     <meta charset="UTF-8">
@@ -8,10 +8,72 @@
     <title>About Us - Tatua Solutions</title>
     <meta name="description"
         content="Learn about Tatua's mission to eliminate support chaos and meet our team of enterprise support experts.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Lexend+Deca:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="tokens.css">
+    <link rel="stylesheet" href="settings-panel.css">
     <link rel="stylesheet" href="about.css">
 </head>
 
 <body>
+    
+
+    <button class="settings-toggle" id="settingsToggle" aria-label="Open display settings">⚙</button>
+    <div class="settings-backdrop" id="settingsBackdrop"></div>
+
+    <aside class="settings-panel" id="settingsPanel" aria-label="Display settings">
+        <h2>Display settings</h2>
+
+        <div class="settings-group">
+            <span class="group-label">Color theme</span>
+            <div class="swatch-row" role="group" aria-label="Color theme">
+                <button class="swatch swatch-purple" data-theme-btn="purple" aria-pressed="true"
+                    title="Purple"></button>
+                <button class="swatch swatch-orange" data-theme-btn="orange" aria-pressed="false"
+                    title="Orange"></button>
+                <button class="swatch swatch-blue" data-theme-btn="blue" aria-pressed="false" title="Blue"></button>
+            </div>
+        </div>
+
+        <div class="settings-group">
+            <span class="group-label">Appearance</span>
+            <div class="mode-row" role="group" aria-label="Light or dark mode">
+                <button data-mode-btn="light" aria-pressed="true">Light</button>
+                <button data-mode-btn="dark" aria-pressed="false">Dark</button>
+            </div>
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="fontScale">Font size <span class="range-value"
+                    id="fontScaleValue">100%</span></label>
+            <input type="range" id="fontScale" min="87.5" max="125" step="1" value="100">
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="spacing">Spacing <span class="range-value"
+                    id="spacingValue">Default</span></label>
+            <input type="range" id="spacing" min="0.75" max="1.5" step="0.05" value="1">
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="radius">Corner roundness <span class="range-value"
+                    id="radiusValue">4px</span></label>
+            <input type="range" id="radius" min="0" max="16" step="1" value="4">
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="fontFamily">Typeface</label>
+            <select id="fontFamily">
+                <option value="asap">Asap (default)</option>
+                <option value="lexend">Lexend Deca</option>
+                <option value="inter">Inter</option>
+            </select>
+        </div>
+    </aside>
 
     <header>
         <nav>
@@ -145,8 +207,10 @@
     </main>
 
     <footer>
-        <p>&copy; 2025
+        <p>&copy; 2025</p>
     </footer>
+
+    <script src="settings.js"></script>
 
 </body>
 

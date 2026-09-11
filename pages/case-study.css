@@ -1,16 +1,15 @@
 /* case-studies.css */
 
-:root {
-    --color-bg: #FFFFFF;
-    --color-text: #1A1D23;
-    --color-muted: #5A6472;
-    --color-accent: #2554C7;
-    --color-border: #E8EAED;
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-}
+/* =========================================================
+   GLOBAL
+   ========================================================= */
 
 * {
     box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
 }
 
 body {
@@ -21,11 +20,14 @@ body {
     background: var(--color-bg);
 }
 
-/* ---------- Header / Nav ---------- */
+/* =========================================================
+   HEADER / NAV
+   ========================================================= */
 
 header {
+    background: var(--color-nav-bg);
     border-bottom: 1px solid var(--color-border);
-    padding: 1.25rem 2rem;
+    padding: calc(1.25rem * var(--space-scale)) calc(2rem * var(--space-scale));
 }
 
 header nav {
@@ -39,41 +41,46 @@ header nav {
 header nav>a {
     font-weight: 700;
     font-size: 1.1rem;
-    color: var(--color-text);
+    color: var(--color-nav-text);
     text-decoration: none;
 }
 
 header nav ul {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: calc(2rem * var(--space-scale));
     margin: 0;
     padding: 0;
 }
 
 header nav ul a {
-    color: var(--color-muted);
+    color: var(--color-nav-text);
     text-decoration: none;
     font-size: 0.95rem;
+    opacity: 0.9;
 }
 
 header nav ul a:hover,
 header nav ul a:focus {
     color: var(--color-accent);
+    opacity: 1;
 }
 
-/* ---------- Breadcrumb ---------- */
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
 
 nav[aria-label="breadcrumb"] {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 1rem 2rem 0;
+    padding:
+        calc(1rem * var(--space-scale)) calc(2rem * var(--space-scale)) 0;
 }
 
 nav[aria-label="breadcrumb"] ol {
     list-style: none;
     display: flex;
-    gap: 0.5rem;
+    gap: calc(0.5rem * var(--space-scale));
     margin: 0;
     padding: 0;
     font-size: 0.85rem;
@@ -100,16 +107,21 @@ nav[aria-label="breadcrumb"] li[aria-current="page"] {
     color: var(--color-text);
 }
 
-/* ---------- Main sections ---------- */
+/* =========================================================
+   MAIN SECTIONS
+   ========================================================= */
 
 main {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 2rem;
+    padding:
+        0 calc(2rem * var(--space-scale));
 }
 
 section {
-    padding: 3rem 0;
+    padding:
+        calc(3rem * var(--space-scale)) 0;
+
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -119,20 +131,30 @@ section:last-of-type {
 
 section h2 {
     font-size: 1.75rem;
-    margin: 0 0 1.5rem;
+    margin:
+        0 0 calc(1.5rem * var(--space-scale));
+
+    color: var(--color-heading);
 }
 
-/* ---------- Page header ---------- */
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
 
 #page-header h1 {
     font-size: 2.25rem;
-    margin: 0 0 0.5rem;
+    margin:
+        0 0 calc(0.5rem * var(--space-scale));
+
+    color: var(--color-heading);
 }
 
 #page-header .tagline {
     font-size: 1.1rem;
     color: var(--color-muted);
-    margin: 0 0 1rem;
+
+    margin:
+        0 0 calc(1rem * var(--space-scale));
 }
 
 #page-header>p:not(.tagline) {
@@ -140,13 +162,20 @@ section h2 {
     color: var(--color-muted);
 }
 
-/* ---------- Case studies ---------- */
+/* =========================================================
+   CASE STUDIES
+   ========================================================= */
 
 .case-study {
+    background: var(--color-bg);
+
     border: 1px solid var(--color-border);
-    border-radius: 4px;
-    padding: 2rem;
-    margin-bottom: 2rem;
+    border-radius: var(--radius-base);
+
+    padding: calc(2rem * var(--space-scale));
+
+    margin-bottom:
+        calc(2rem * var(--space-scale));
 }
 
 .case-study:last-child {
@@ -155,14 +184,23 @@ section h2 {
 
 .case-study h3 {
     font-size: 1.3rem;
-    margin: 0 0 1rem;
+
+    margin:
+        0 0 calc(1rem * var(--space-scale));
+
+    color: var(--color-text);
 }
 
 .case-study .company-info {
     display: grid;
     grid-template-columns: max-content 1fr;
-    gap: 0.3rem 1rem;
-    margin: 0 0 1.5rem;
+
+    gap:
+        calc(0.3rem * var(--space-scale)) calc(1rem * var(--space-scale));
+
+    margin:
+        0 0 calc(1.5rem * var(--space-scale));
+
     font-size: 0.9rem;
 }
 
@@ -176,7 +214,10 @@ section h2 {
 
 .case-study h4 {
     font-size: 1rem;
-    margin: 1.25rem 0 0.5rem;
+
+    margin:
+        calc(1.25rem * var(--space-scale)) 0 calc(0.5rem * var(--space-scale));
+
     color: var(--color-accent);
 }
 
@@ -189,7 +230,10 @@ section h2 {
 .case-study .results {
     display: grid;
     grid-template-columns: max-content 1fr;
-    gap: 0.5rem 1rem;
+
+    gap:
+        calc(0.5rem * var(--space-scale)) calc(1rem * var(--space-scale));
+
     margin: 0;
 }
 
@@ -204,16 +248,28 @@ section h2 {
     font-size: 0.9rem;
 }
 
+/* =========================================================
+   CASE STUDY BLOCKQUOTES
+   ========================================================= */
+
 .case-study blockquote {
-    margin: 1.5rem 0 0;
-    padding: 1rem 1.25rem;
+    margin:
+        calc(1.5rem * var(--space-scale)) 0 0;
+
+    padding:
+        calc(1rem * var(--space-scale)) calc(1.25rem * var(--space-scale));
+
     border-left: 3px solid var(--color-accent);
-    background: #F7F8FA;
+
+    background: var(--color-surface);
+
     font-style: italic;
 }
 
 .case-study blockquote p {
-    margin: 0 0 0.5rem;
+    margin:
+        0 0 calc(0.5rem * var(--space-scale));
+
     color: var(--color-text);
 }
 
@@ -223,12 +279,16 @@ section h2 {
     color: var(--color-muted);
 }
 
-/* ---------- Tables ---------- */
+/* =========================================================
+   TABLES
+   ========================================================= */
 
 .table-desc {
     font-size: 0.9rem;
     color: var(--color-muted);
-    margin: 0 0 1rem;
+
+    margin:
+        0 0 calc(1rem * var(--space-scale));
 }
 
 table {
@@ -240,21 +300,30 @@ table {
 caption {
     text-align: left;
     font-weight: 700;
-    margin-bottom: 0.75rem;
+
+    margin-bottom:
+        calc(0.75rem * var(--space-scale));
+
     color: var(--color-text);
 }
 
 thead th {
-    background: #F7F8FA;
+    background: var(--color-surface);
     text-align: left;
-    padding: 0.75rem 1rem;
+
+    padding:
+        calc(0.75rem * var(--space-scale)) calc(1rem * var(--space-scale));
+
     border-bottom: 2px solid var(--color-border);
+
     font-size: 0.85rem;
 }
 
 tbody th,
 tbody td {
-    padding: 0.65rem 1rem;
+    padding:
+        calc(0.65rem * var(--space-scale)) calc(1rem * var(--space-scale));
+
     border-bottom: 1px solid var(--color-border);
     text-align: left;
 }
@@ -273,18 +342,27 @@ tbody tr:last-child td {
     border-bottom: none;
 }
 
-/* ---------- ROI ---------- */
+/* =========================================================
+   ROI
+   ========================================================= */
 
 #roi dl {
     display: grid;
+
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem 2rem;
-    margin-top: 1.5rem;
+
+    gap:
+        calc(1.5rem * var(--space-scale)) calc(2rem * var(--space-scale));
+
+    margin-top:
+        calc(1.5rem * var(--space-scale));
 }
 
 #roi dt {
     font-weight: 700;
-    margin-bottom: 0.25rem;
+
+    margin-bottom:
+        calc(0.25rem * var(--space-scale));
 }
 
 #roi dd {
@@ -292,28 +370,43 @@ tbody tr:last-child td {
     color: var(--color-muted);
 }
 
-/* ---------- Testimonials ---------- */
+/* =========================================================
+   TESTIMONIALS
+   ========================================================= */
 
 #testimonials ul {
     list-style: none;
+
     margin: 0;
     padding: 0;
+
     display: grid;
+
     grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
+
+    gap:
+        calc(1.5rem * var(--space-scale));
 }
 
 #testimonials blockquote {
     margin: 0;
-    padding: 1.25rem;
+
+    padding:
+        calc(1.25rem * var(--space-scale));
+
     border-left: 3px solid var(--color-accent);
-    background: #F7F8FA;
+
+    background: var(--color-surface);
+
     height: 100%;
 }
 
 #testimonials blockquote p {
     font-style: italic;
-    margin: 0 0 0.75rem;
+
+    margin:
+        0 0 calc(0.75rem * var(--space-scale));
+
     font-size: 0.95rem;
 }
 
@@ -323,28 +416,43 @@ tbody tr:last-child td {
     color: var(--color-muted);
 }
 
-/* ---------- Footer ---------- */
+/* =========================================================
+   FOOTER
+   ========================================================= */
 
 footer {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem;
+
+    padding:
+        calc(2rem * var(--space-scale));
+
     border-top: 1px solid var(--color-border);
+
     font-size: 0.9rem;
-    color: var(--color-muted);
+
+    color: var(--color-footer-text);
+    background: var(--color-footer-bg);
 }
 
 footer ul {
     list-style: none;
-    margin: 0.5rem 0 0;
+
+    margin:
+        calc(0.5rem * var(--space-scale)) 0 0;
+
     padding: 0;
+
     display: flex;
-    gap: 1.5rem;
+
+    gap:
+        calc(1.5rem * var(--space-scale));
+
     flex-wrap: wrap;
 }
 
 footer a {
-    color: var(--color-muted);
+    color: var(--color-footer-text);
     text-decoration: none;
 }
 
@@ -353,12 +461,165 @@ footer a:focus {
     color: var(--color-accent);
 }
 
-/* ---------- Responsive ---------- */
+/* =========================================================
+   SETTINGS PANEL
+   ========================================================= */
+
+.settings-toggle {
+    position: fixed;
+    right: 1.5rem;
+    bottom: 1.5rem;
+
+    width: 48px;
+    height: 48px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+
+    cursor: pointer;
+
+    font-size: 1.2rem;
+
+    z-index: 1001;
+}
+
+.settings-toggle:hover {
+    opacity: 0.9;
+}
+
+.settings-backdrop {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.4);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+
+    z-index: 1000;
+}
+
+.settings-backdrop.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.settings-panel {
+    position: fixed;
+
+    top: 0;
+    right: 0;
+
+    width: min(360px, 90vw);
+    height: 100vh;
+
+    padding: 2rem;
+
+    background: var(--color-bg);
+    color: var(--color-text);
+
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.15);
+
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+
+    overflow-y: auto;
+
+    z-index: 1002;
+}
+
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    margin-top: 0;
+    color: var(--color-heading);
+}
+
+.settings-group {
+    margin-bottom: 1.5rem;
+}
+
+.settings-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.settings-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.settings-options button {
+    border: 1px solid var(--color-border);
+
+    background: var(--color-surface);
+    color: var(--color-text);
+
+    padding: 0.5rem 0.75rem;
+
+    border-radius: var(--radius-base);
+
+    cursor: pointer;
+}
+
+.settings-options button:hover,
+.settings-options button.active {
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+    border-color: var(--color-accent);
+}
+
+.settings-panel input[type="range"],
+.settings-panel select {
+    width: 100%;
+}
+
+.settings-value {
+    color: var(--color-muted);
+    font-size: 0.9rem;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
 
 @media (max-width: 700px) {
+
+    header {
+        padding:
+            calc(1rem * var(--space-scale));
+    }
+
     header nav {
         flex-direction: column;
         gap: 1rem;
+    }
+
+    header nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        padding:
+            0 calc(1rem * var(--space-scale));
+    }
+
+    nav[aria-label="breadcrumb"] {
+        padding:
+            calc(1rem * var(--space-scale)) calc(1rem * var(--space-scale)) 0;
     }
 
     table {
@@ -372,6 +633,16 @@ footer a:focus {
     }
 
     #testimonials ul {
+        grid-template-columns: 1fr;
+    }
+
+    .case-study {
+        padding:
+            calc(1.25rem * var(--space-scale));
+    }
+
+    .case-study .company-info,
+    .case-study .results {
         grid-template-columns: 1fr;
     }
 }

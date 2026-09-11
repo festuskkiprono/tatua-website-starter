@@ -1,31 +1,95 @@
-/* home.css */
-
+/* ============================================================
+   1. TOKENS  —  this block is your tokens.css.
+   Every page links this BEFORE its own stylesheet.
+   ============================================================ */
 :root {
+    /* fixed brand hues — these never change, only their ROLE does */
+    --brand-purple: #5B2C83;
+    --brand-purple-dark: #452066;
+    --brand-orange: #F28C28;
+    --brand-blue: #174A7E;
+    --brand-blue-light: #EAF2F8;
+
+    /* neutral scale (light mode defaults) */
     --color-bg: #FFFFFF;
+    --color-surface: #FAF8FC;
     --color-text: #1A1D23;
     --color-muted: #5A6472;
-    --color-accent: #2554C7;
     --color-border: #E8EAED;
-    --font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+    /* role tokens — theme blocks below only touch these */
+    --color-nav-bg: var(--brand-purple);
+    --color-nav-text: #FFFFFF;
+    --color-heading: var(--brand-orange);
+    --color-accent: var(--brand-orange);
+    --color-accent-text: #FFFFFF;
+    --color-footer-bg: var(--brand-blue);
+    --color-footer-text: #FFFFFF;
+
+    /* user-adjustable controls */
+    --space-scale: 1;
+    --radius-base: 4px;
+    --font-body: 'Asap', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
+/* ---- color theme presets: rotate WHICH brand color plays WHICH role ---- */
+[data-theme="purple"] {
+    --color-nav-bg: var(--brand-purple);
+    --color-heading: var(--brand-orange);
+    --color-accent: var(--brand-orange);
+    --color-footer-bg: var(--brand-blue);
+}
+
+[data-theme="orange"] {
+    --color-nav-bg: var(--brand-orange);
+    --color-heading: var(--brand-purple);
+    --color-accent: var(--brand-purple);
+    --color-footer-bg: var(--brand-blue);
+}
+
+[data-theme="blue"] {
+    --color-nav-bg: var(--brand-blue);
+    --color-heading: var(--brand-orange);
+    --color-accent: var(--brand-orange);
+    --color-footer-bg: var(--brand-purple);
+}
+
+/* ---- light / dark is a SEPARATE axis from color theme ---- */
+[data-mode="dark"] {
+    --color-bg: #14161A;
+    --color-surface: #1B1E24;
+    --color-text: #ECEDEF;
+    --color-muted: #9AA3AF;
+    --color-border: #2A2E36;
+    --brand-blue-light: #1E2A38;
+}
+
+/* ============================================================
+   2. BASE PAGE STYLES  — this is your home.css, refactored to
+   reference role tokens instead of hardcoded hex values.
+   ============================================================ */
 * {
     box-sizing: border-box;
 }
+
+html {
+    font-size: 100%;
+}
+
+/* the font-size slider changes THIS */
 
 body {
     margin: 0;
     font-family: var(--font-body);
     color: var(--color-text);
-    line-height: 1.5;
     background: var(--color-bg);
+    line-height: 1.5;
+    transition: background 0.2s ease, color 0.2s ease;
 }
 
-/* ---------- Header / Nav ---------- */
-
 header {
-    border-bottom: 1px solid var(--color-border);
-    padding: 1.25rem 2rem;
+    background: var(--color-nav-bg);
+    padding: calc(1.25rem * var(--space-scale)) 2rem;
 }
 
 header nav {
@@ -39,7 +103,7 @@ header nav {
 header nav>a {
     font-weight: 700;
     font-size: 1.1rem;
-    color: var(--color-text);
+    color: var(--color-nav-text);
     text-decoration: none;
 }
 
@@ -52,17 +116,16 @@ header nav ul {
 }
 
 header nav ul a {
-    color: var(--color-muted);
+    color: var(--color-nav-text);
     text-decoration: none;
     font-size: 0.95rem;
+    opacity: 0.88;
 }
 
 header nav ul a:hover,
 header nav ul a:focus {
-    color: var(--color-accent);
+    opacity: 1;
 }
-
-/* ---------- Main sections ---------- */
 
 main {
     max-width: 1100px;
@@ -71,7 +134,7 @@ main {
 }
 
 section {
-    padding: 4rem 0;
+    padding: calc(4rem * var(--space-scale)) 0;
     border-bottom: 1px solid var(--color-border);
 }
 
@@ -79,11 +142,9 @@ section:last-of-type {
     border-bottom: none;
 }
 
-/* ---------- Hero ---------- */
-
 #hero {
     text-align: center;
-    padding-top: 5rem;
+    padding-top: calc(5rem * var(--space-scale));
 }
 
 #hero h1 {
@@ -93,6 +154,7 @@ section:last-of-type {
     max-width: 40ch;
     margin-left: auto;
     margin-right: auto;
+    color: var(--color-heading);
 }
 
 #hero .tagline {
@@ -103,7 +165,7 @@ section:last-of-type {
 
 #hero>p:not(.tagline) {
     max-width: 55ch;
-    margin: 0 auto 2rem;
+    margin: 0 auto calc(2rem * var(--space-scale));
     color: var(--color-muted);
 }
 
@@ -111,25 +173,27 @@ section:last-of-type {
     display: flex;
     gap: 1rem;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .btn {
     display: inline-block;
     padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    border-radius: var(--radius-base);
     text-decoration: none;
     font-weight: 600;
     font-size: 0.95rem;
+    transition: filter 0.15s ease;
 }
 
 .btn-primary {
     background: var(--color-accent);
-    color: #FFFFFF;
+    color: var(--color-accent-text);
 }
 
 .btn-primary:hover,
 .btn-primary:focus {
-    background: #1E44A8;
+    filter: brightness(0.9);
 }
 
 .btn-secondary {
@@ -144,11 +208,10 @@ section:last-of-type {
     color: var(--color-accent);
 }
 
-/* ---------- Services ---------- */
-
-#services h2 {
+#services h2,
+#stats h2 {
     font-size: 1.75rem;
-    margin-bottom: 2rem;
+    margin-bottom: calc(2rem * var(--space-scale));
 }
 
 #services ul {
@@ -157,7 +220,13 @@ section:last-of-type {
     padding: 0;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
+    gap: calc(2rem * var(--space-scale));
+}
+
+#services li {
+    background: var(--color-surface);
+    padding: calc(1.5rem * var(--space-scale));
+    border-radius: var(--radius-base);
 }
 
 #services li h3 {
@@ -171,20 +240,13 @@ section:last-of-type {
     font-size: 0.95rem;
 }
 
-/* ---------- Stats ---------- */
-
-#stats h2 {
-    font-size: 1.75rem;
-    margin-bottom: 2rem;
-}
-
 #stats ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 1.5rem;
+    gap: calc(1.5rem * var(--space-scale));
     text-align: center;
 }
 
@@ -200,15 +262,16 @@ section:last-of-type {
     font-weight: 700;
 }
 
-/* ---------- Footer ---------- */
-
 footer {
+    background: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    padding: calc(2rem * var(--space-scale));
+}
+
+footer .inner {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 2rem;
-    border-top: 1px solid var(--color-border);
     font-size: 0.9rem;
-    color: var(--color-muted);
 }
 
 footer ul {
@@ -221,16 +284,15 @@ footer ul {
 }
 
 footer a {
-    color: var(--color-muted);
+    color: var(--color-footer-text);
     text-decoration: none;
+    opacity: 0.85;
 }
 
 footer a:hover,
 footer a:focus {
-    color: var(--color-accent);
+    opacity: 1;
 }
-
-/* ---------- Responsive ---------- */
 
 @media (max-width: 700px) {
     header nav {
@@ -250,4 +312,155 @@ footer a:focus {
     #stats ul {
         grid-template-columns: 1fr;
     }
+}
+
+/* ============================================================
+   3. SETTINGS PANEL  — the shared control script's UI.
+   Drop this markup + script include on every page.
+   ============================================================ */
+.settings-toggle {
+    position: fixed;
+    top: 1.25rem;
+    right: 1.25rem;
+    z-index: 100;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    color: var(--color-accent-text);
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.settings-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 320px;
+    background: var(--color-bg);
+    color: var(--color-text);
+    border-left: 1px solid var(--color-border);
+    padding: 1.5rem;
+    overflow-y: auto;
+    z-index: 99;
+    transform: translateX(100%);
+    transition: transform 0.25s ease;
+    font-size: 0.9rem;
+}
+
+.settings-panel.open {
+    transform: translateX(0);
+}
+
+.settings-panel h2 {
+    font-size: 1.1rem;
+    margin: 0 0 1.25rem;
+}
+
+.settings-group {
+    margin-bottom: 1.5rem;
+}
+
+.settings-group label.group-label {
+    display: block;
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+    margin-bottom: 0.6rem;
+}
+
+.swatch-row {
+    display: flex;
+    gap: 0.6rem;
+}
+
+.swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 0.7rem;
+}
+
+.swatch[aria-pressed="true"] {
+    border-color: var(--color-text);
+}
+
+.swatch-purple {
+    background: var(--brand-purple);
+}
+
+.swatch-orange {
+    background: var(--brand-orange);
+}
+
+.swatch-blue {
+    background: var(--brand-blue);
+}
+
+.mode-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.mode-row button {
+    flex: 1;
+    padding: 0.5rem;
+    border-radius: var(--radius-base);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.mode-row button[aria-pressed="true"] {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+}
+
+.settings-group input[type="range"] {
+    width: 100%;
+}
+
+.settings-group .range-value {
+    color: var(--color-muted);
+    font-size: 0.8rem;
+}
+
+.settings-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: var(--radius-base);
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-family: inherit;
+    font-size: 0.85rem;
+}
+
+.settings-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 98;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+}
+
+.settings-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
 }

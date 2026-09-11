@@ -1,0 +1,74 @@
+/* ============================================================
+   TOKENS — shared across all pages
+   ============================================================ */
+
+:root {
+    /* Brand colors */
+    --brand-purple: #5B2C83;
+    --brand-purple-dark: #452066;
+    --brand-orange: #F28C28;
+    --brand-blue: #174A7E;
+    --brand-blue-light: #EAF2F8;
+
+    /* Neutral colors */
+    --color-bg: #FFFFFF;
+    --color-surface: #FAF8FC;
+    --color-text: #1A1D23;
+    --color-muted: #5A6472;
+    --color-border: #E8EAED;
+
+    /* Semantic roles */
+    --color-nav-bg: var(--brand-purple);
+    --color-nav-text: #FFFFFF;
+
+    --color-heading: var(--brand-orange);
+
+    --color-accent: var(--brand-orange);
+    --color-accent-text: #FFFFFF;
+
+    --color-footer-bg: var(--brand-blue);
+    --color-footer-text: #FFFFFF;
+
+    /* User-adjustable settings */
+    --space-scale: 1;
+    --radius-base: 4px;
+    --font-body: 'Asap', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ============================================================
+   COLOR THEMES
+   ============================================================ */
+
+[data-theme="purple"] {
+    --color-nav-bg: var(--brand-purple);
+    --color-heading: var(--brand-orange);
+    --color-accent: var(--brand-orange);
+    --color-footer-bg: var(--brand-blue);
+}
+
+[data-theme="orange"] {
+    --color-nav-bg: var(--brand-orange);
+    --color-heading: var(--brand-purple);
+    --color-accent: var(--brand-purple);
+    --color-footer-bg: var(--brand-blue);
+}
+
+[data-theme="blue"] {
+    --color-nav-bg: var(--brand-blue);
+    --color-heading: var(--brand-orange);
+    --color-accent: var(--brand-orange);
+    --color-footer-bg: var(--brand-purple);
+}
+
+/* ============================================================
+   DARK MODE
+   ============================================================ */
+
+[data-mode="dark"] {
+    --color-bg: #14161A;
+    --color-surface: #1B1E24;
+    --color-text: #ECEDEF;
+    --color-muted: #9AA3AF;
+    --color-border: #2A2E36;
+    --brand-blue-light: #1E2A38;
+}

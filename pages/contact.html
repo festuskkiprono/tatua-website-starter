@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="purple" data-mode="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="../assets/tatua-favicon.png" />
-    <title>Contact Us - Tatua Solutions</title>
+    <title style="color: #FFFFFF;">Contact Us - Tatua Solutions</title>
     <meta name="description"
         content="Get in touch with Tatua's team. Start your free trial or schedule a demo to see how we can transform your support operations.">
+    <link rel="stylesheet" href="tokens.css">
     <link rel="stylesheet" href="contact.css">
 </head>
 
@@ -148,5 +149,348 @@
     </footer>
 
 </body>
+<button class="settings-toggle" id="settingsToggle" aria-label="Open display settings">
+    ⚙
+</button>
+
+<div class="settings-backdrop" id="settingsBackdrop">
+</div>
+
+<aside class="settings-panel" id="settingsPanel" aria-label="Display settings">
+
+    <h2>Display settings</h2>
+
+    <div class="settings-group">
+        <span class="group-label">Color theme</span>
+
+        <div class="swatch-row" role="group" aria-label="Color theme">
+
+            <button class="swatch swatch-purple" data-theme-btn="purple" aria-pressed="true" title="Purple">
+            </button>
+
+            <button class="swatch swatch-orange" data-theme-btn="orange" aria-pressed="false" title="Orange">
+            </button>
+
+            <button class="swatch swatch-blue" data-theme-btn="blue" aria-pressed="false" title="Blue">
+            </button>
+
+        </div>
+    </div>
+
+    <div class="settings-group">
+        <span class="group-label">Appearance</span>
+
+        <div class="mode-row" role="group" aria-label="Light or dark mode">
+
+            <button data-mode-btn="light" aria-pressed="true">
+                Light
+            </button>
+
+            <button data-mode-btn="dark" aria-pressed="false">
+                Dark
+            </button>
+
+        </div>
+    </div>
+
+    <div class="settings-group">
+        <label class="group-label" for="fontScale">
+            Font size
+            <span class="range-value" id="fontScaleValue">100%</span>
+        </label>
+
+        <input type="range" id="fontScale" min="87.5" max="125" step="1" value="100">
+    </div>
+
+    <div class="settings-group">
+        <label class="group-label" for="spacing">
+            Spacing
+            <span class="range-value" id="spacingValue">
+                Default
+            </span>
+        </label>
+
+        <input type="range" id="spacing" min="0.75" max="1.5" step="0.05" value="1">
+    </div>
+
+    <div class="settings-group">
+        <label class="group-label" for="radius">
+            Corner roundness
+            <span class="range-value" id="radiusValue">
+                4px
+            </span>
+        </label>
+
+        <input type="range" id="radius" min="0" max="16" step="1" value="4">
+    </div>
+
+    <div class="settings-group">
+        <label class="group-label" for="fontFamily">
+            Typeface
+        </label>
+
+        <select id="fontFamily">
+            <option value="asap">Asap (default)</option>
+            <option value="lexend">Lexend Deca</option>
+            <option value="inter">Inter</option>
+        </select>
+    </div>
+
+</aside>
+<script>
+    (function () {
+
+            const STORAGE_KEY = 'tatua-settings';
+
+            const fontStacks = {
+                asap: "'Asap', -apple-system, BlinkMacSystemFont, sans-serif",
+                lexend: "'Lexend Deca', -apple-system, BlinkMacSystemFont, sans-serif",
+                inter: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif"
+            };
+
+            const defaults = {
+                theme: 'purple',
+                mode: 'light',
+                fontScale: 100,
+                spacing: 1,
+                radius: 4,
+                font: 'asap'
+            };
+
+            function loadSettings() {
+                try {
+                    const saved = JSON.parse(
+                        localStorage.getItem(STORAGE_KEY)
+                    );
+
+                    return Object.assign({}, defaults, saved || {});
+
+                } catch (e) {
+                    return { ...defaults };
+                }
+            }
+
+            function saveSettings(settings) {
+                localStorage.setItem(
+                    STORAGE_KEY,
+                    JSON.stringify(settings)
+                );
+            }
+
+            function applySettings(settings) {
+
+                const html = document.documentElement;
+
+                html.setAttribute(
+                    'data-theme',
+                    settings.theme
+                );
+
+                html.setAttribute(
+                    'data-mode',
+                    settings.mode
+                );
+
+                html.style.fontSize =
+                    settings.fontScale + '%';
+
+                html.style.setProperty(
+                    '--space-scale',
+                    settings.spacing
+                );
+
+                html.style.setProperty(
+                    '--radius-base',
+                    settings.radius + 'px'
+                );
+
+                html.style.setProperty(
+                    '--font-body',
+                    fontStacks[settings.font]
+                );
+
+                /* Theme buttons */
+
+                document
+                    .querySelectorAll('[data-theme-btn]')
+                    .forEach(button => {
+
+                        button.setAttribute(
+                            'aria-pressed',
+                            button.dataset.themeBtn === settings.theme
+                        );
+                    });
+
+                /* Mode buttons */
+
+                document
+                    .querySelectorAll('[data-mode-btn]')
+                    .forEach(button => {
+
+                        button.setAttribute(
+                            'aria-pressed',
+                            button.dataset.modeBtn === settings.mode
+                        );
+                    });
+
+                /* Font size */
+
+                document.getElementById('fontScale').value =
+                    settings.fontScale;
+
+                document.getElementById('fontScaleValue').textContent =
+                    settings.fontScale + '%';
+
+                /* Spacing */
+
+                document.getElementById('spacing').value =
+                    settings.spacing;
+
+                document.getElementById('spacingValue').textContent =
+                    settings.spacing < 0.95
+                        ? 'Compact'
+                        : settings.spacing > 1.05
+                            ? 'Relaxed'
+                            : 'Default';
+
+                /* Radius */
+
+                document.getElementById('radius').value =
+                    settings.radius;
+
+                document.getElementById('radiusValue').textContent =
+                    settings.radius + 'px';
+
+                /* Font */
+
+                document.getElementById('fontFamily').value =
+                    settings.font;
+            }
+
+            let state = loadSettings();
+
+            applySettings(state);
+
+            function update(partial) {
+
+                state = Object.assign(
+                    {},
+                    state,
+                    partial
+                );
+
+                applySettings(state);
+                saveSettings(state);
+            }
+
+            /* Panel */
+
+            const panel =
+                document.getElementById('settingsPanel');
+
+            const backdrop =
+                document.getElementById('settingsBackdrop');
+
+            const toggle =
+                document.getElementById('settingsToggle');
+
+            function openPanel() {
+                panel.classList.add('open');
+                backdrop.classList.add('open');
+            }
+
+            function closePanel() {
+                panel.classList.remove('open');
+                backdrop.classList.remove('open');
+            }
+
+            toggle.addEventListener(
+                'click',
+                () => {
+
+                    panel.classList.contains('open')
+                        ? closePanel()
+                        : openPanel();
+
+                }
+            );
+
+            backdrop.addEventListener(
+                'click',
+                closePanel
+            );
+
+            /* Themes */
+
+            document
+                .querySelectorAll('[data-theme-btn]')
+                .forEach(button => {
+
+                    button.addEventListener(
+                        'click',
+                        () => update({
+                            theme: button.dataset.themeBtn
+                        })
+                    );
+
+                });
+
+            /* Appearance */
+
+            document
+                .querySelectorAll('[data-mode-btn]')
+                .forEach(button => {
+
+                    button.addEventListener(
+                        'click',
+                        () => update({
+                            mode: button.dataset.modeBtn
+                        })
+                    );
+
+                });
+
+            /* Sliders */
+
+            document
+                .getElementById('fontScale')
+                .addEventListener(
+                    'input',
+                    event => update({
+                        fontScale: Number(event.target.value)
+                    })
+                );
+
+            document
+                .getElementById('spacing')
+                .addEventListener(
+                    'input',
+                    event => update({
+                        spacing: Number(event.target.value)
+                    })
+                );
+
+            document
+                .getElementById('radius')
+                .addEventListener(
+                    'input',
+                    event => update({
+                        radius: Number(event.target.value)
+                    })
+                );
+
+            /* Typeface */
+
+            document
+                .getElementById('fontFamily')
+                .addEventListener(
+                    'change',
+                    event => update({
+                        font: event.target.value
+                    })
+                );
+
+        })();
+</script>
 
 </html>

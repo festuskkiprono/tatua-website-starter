@@ -1,17 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="purple" data-mode="light">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" href="../assets/tatua-favicon.png" />
-    <title>Tatua - Enterprise Ticketing Solutions</title>
-    <meta name="description"
-        content="Streamline your support operations with Tatua's enterprise-grade ticketing system. Join 500+ companies delivering exceptional customer experiences.">
-    <link rel="stylesheet" href="home.css">
+    <title>Tatua Solutions — </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Asap:wght@400;500;600;700&family=Lexend+Deca:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+        <link rel="stylesheet" href="home.css">
+   
 </head>
 
 <body>
+    
+
+    <button class="settings-toggle" id="settingsToggle" aria-label="Open display settings">⚙</button>
+    <div class="settings-backdrop" id="settingsBackdrop"></div>
+
+    <aside class="settings-panel" id="settingsPanel" aria-label="Display settings">
+        <h2>Display settings</h2>
+
+        <div class="settings-group">
+            <span class="group-label">Color theme</span>
+            <div class="swatch-row" role="group" aria-label="Color theme">
+                <button class="swatch swatch-purple" data-theme-btn="purple" aria-pressed="true"
+                    title="Purple"></button>
+                <button class="swatch swatch-orange" data-theme-btn="orange" aria-pressed="false"
+                    title="Orange"></button>
+                <button class="swatch swatch-blue" data-theme-btn="blue" aria-pressed="false" title="Blue"></button>
+            </div>
+        </div>
+
+        <div class="settings-group">
+            <span class="group-label">Appearance</span>
+            <div class="mode-row" role="group" aria-label="Light or dark mode">
+                <button data-mode-btn="light" aria-pressed="true">Light</button>
+                <button data-mode-btn="dark" aria-pressed="false">Dark</button>
+            </div>
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="fontScale">Font size <span class="range-value"
+                    id="fontScaleValue">100%</span></label>
+            <input type="range" id="fontScale" min="87.5" max="125" step="1" value="100">
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="spacing">Spacing <span class="range-value"
+                    id="spacingValue">Default</span></label>
+            <input type="range" id="spacing" min="0.75" max="1.5" step="0.05" value="1">
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="radius">Corner roundness <span class="range-value"
+                    id="radiusValue">4px</span></label>
+            <input type="range" id="radius" min="0" max="16" step="1" value="4">
+        </div>
+
+        <div class="settings-group">
+            <label class="group-label" for="fontFamily">Typeface</label>
+            <select id="fontFamily">
+                <option value="asap">Asap (default)</option>
+                <option value="lexend">Lexend Deca</option>
+                <option value="inter">Inter</option>
+            </select>
+        </div>
+    </aside>
 
     <header>
         <nav>
@@ -26,15 +84,14 @@
     </header>
 
     <main>
-
         <section id="hero">
             <h1>Streamline Your Support Operations</h1>
             <p class="tagline">Enterprise-grade ticketing system that scales with your business</p>
             <p>Join 500+ companies using Tatua to manage customer support, track issues, and deliver exceptional service
                 experiences.</p>
             <div class="cta-buttons">
-                <a href="../contact/contact.html" class="btn btn-primary">Start Free Trial</a>
-                <a href="../contact/contact.html" class="btn btn-secondary">Schedule Demo</a>
+                <a href="#" class="btn btn-primary">Start Free Trial</a>
+                <a href="#" class="btn btn-secondary">Schedule Demo</a>
             </div>
         </section>
 
@@ -65,17 +122,20 @@
                 <li><strong>99.9%</strong> uptime guarantee</li>
             </ul>
         </section>
-
     </main>
 
     <footer>
-        <p>&copy; 2025 Tatua Solutions Inc.</p>
-        <ul>
-            <li>Email: <a href="mailto:hello@tatua.com">hello@tatua.com</a></li>
-            <li>Phone: <a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-            <li>Address: 123 Innovation Drive, Suite 400, San Francisco, CA 94105</li>
-        </ul>
+        <div class="inner">
+            <p>&copy; 2025 Tatua Solutions Inc.</p>
+            <ul>
+                <li><a href="#">hello@tatua.com</a></li>
+                <li><a href="#">+1 (555) 123-4567</a></li>
+                <li>123 Innovation Drive, Suite 400, San Francisco, CA 94105</li>
+            </ul>
+        </div>
     </footer>
+
+    <script src="settings.js"></script>
 
 </body>
 
