@@ -19,12 +19,12 @@
 </head>
 
 <body>
-    
 
-   
-    
 
-    
+
+
+
+
 
     <header>
         <nav>
@@ -65,69 +65,117 @@
 
         <section id="team">
             <h2>Meet Our Team</h2>
-            <ul>
+            <ul class="team-grid">
                 <li>
-                    <h3>Sarah Chen</h3>
-                    <dl>
-                        <dt>Title</dt>
-                        <dd>CEO &amp; Co-founder</dd>
-                        <dt>Background</dt>
-                        <dd>Former Head of Support at TechCorp</dd>
-                        <dt>Experience</dt>
-                        <dd>10+ years in customer success</dd>
-                        <dt>Email</dt>
-                        <dd><a href="mailto:sarah@tatua.com">sarah@tatua.com</a></dd>
-                    </dl>
-                    <p>Sarah led support teams of 50+ agents and understands the challenges of scaling customer service
-                        operations.</p>
+                    <button type="button" class="team-card" data-team-dialog="sarah-chen">
+                        <span class="team-avatar" aria-hidden="true">SC</span>
+                        <span class="team-name">Sarah Chen</span>
+                        <span class="team-title">CEO &amp; Co-founder</span>
+                    </button>
                 </li>
                 <li>
-                    <h3>Marcus Rodriguez</h3>
-                    <dl>
-                        <dt>Title</dt>
-                        <dd>CTO &amp; Co-founder</dd>
-                        <dt>Background</dt>
-                        <dd>Ex-Senior Engineer at CloudScale</dd>
-                        <dt>Experience</dt>
-                        <dd>Expert in distributed systems</dd>
-                        <dt>Email</dt>
-                        <dd><a href="mailto:marcus@tatua.com">marcus@tatua.com</a></dd>
-                    </dl>
-                    <p>Marcus built high-performance systems serving millions of users and brings that expertise to
-                        support infrastructure.</p>
+                    <button type="button" class="team-card" data-team-dialog="marcus-rodriguez">
+                      <span class="team-avatar" aria-hidden="true">MR</span>
+                        <span class="team-name">Marcus Rodriguez</span>
+                        <span class="team-title">CTO &amp; Co-founder</span>
+                    </button>
                 </li>
                 <li>
-                    <h3>Jennifer Park</h3>
-                    <dl>
-                        <dt>Title</dt>
-                        <dd>Head of Product</dd>
-                        <dt>Background</dt>
-                        <dd>Former Product Manager at SupportFlow</dd>
-                        <dt>Experience</dt>
-                        <dd>Specialist in UX design</dd>
-                        <dt>Email</dt>
-                        <dd><a href="mailto:jennifer@tatua.com">jennifer@tatua.com</a></dd>
-                    </dl>
-                    <p>Jennifer designed user experiences for complex enterprise software and focuses on making support
-                        tools intuitive.</p>
+                    <button type="button" class="team-card" data-team-dialog="jennifer-park">
+                       <span class="team-avatar" aria-hidden="true">JP</span>
+                        <span class="team-name">Jennifer Park</span>
+                        <span class="team-title">Head of Product</span>
+                    </button>
                 </li>
                 <li>
-                    <h3>David Kim</h3>
-                    <dl>
-                        <dt>Title</dt>
-                        <dd>Lead Developer</dd>
-                        <dt>Background</dt>
-                        <dd>Full-stack engineer, 8 years experience</dd>
-                        <dt>Experience</dt>
-                        <dd>Open source contributor</dd>
-                        <dt>Email</dt>
-                        <dd><a href="mailto:david@tatua.com">david@tatua.com</a></dd>
-                    </dl>
-                    <p>David contributes to major open source projects and ensures our platform follows industry best
-                        practices.</p>
+                    <button type="button" class="team-card" data-team-dialog="david-kim">
+                       <span class="team-avatar" aria-hidden="true">DK</span>
+                        <span class="team-name">David Kim</span>
+                        <span class="team-title">Lead Developer</span>
+                    </button>
                 </li>
             </ul>
         </section>
+
+        <!-- Team member dialogs -->
+        <dialog class="team-dialog" id="dialog-sarah-chen" aria-labelledby="dialog-sarah-chen-name">
+            <form method="dialog">
+                <button type="submit" class="dialog-close" aria-label="Close">&times;</button>
+            </form>
+            <img class="team-avatar team-avatar-lg" src="../assets/team/sarah-chen.jpg" alt="" width="120" height="120">
+            <h3 id="dialog-sarah-chen-name">Sarah Chen</h3>
+            <p class="dialog-title">CEO &amp; Co-founder</p>
+            <dl>
+                <dt>Background</dt>
+                <dd>Former Head of Support at TechCorp</dd>
+                <dt>Experience</dt>
+                <dd>10+ years in customer success</dd>
+                <dt>Email</dt>
+                <dd><a href="mailto:sarah@tatua.com">sarah@tatua.com</a></dd>
+            </dl>
+            <p>Sarah led support teams of 50+ agents and understands the challenges of scaling customer service
+                operations.</p>
+        </dialog>
+
+        <dialog class="team-dialog" id="dialog-marcus-rodriguez" aria-labelledby="dialog-marcus-rodriguez-name">
+            <form method="dialog">
+                <button type="submit" class="dialog-close" aria-label="Close">&times;</button>
+            </form>
+            <img class="team-avatar team-avatar-lg" src="../assets/team/marcus-rodriguez.jpg" alt="" width="120"
+                height="120">
+            <h3 id="dialog-marcus-rodriguez-name">Marcus Rodriguez</h3>
+            <p class="dialog-title">CTO &amp; Co-founder</p>
+            <dl>
+                <dt>Background</dt>
+                <dd>Ex-Senior Engineer at CloudScale</dd>
+                <dt>Experience</dt>
+                <dd>Expert in distributed systems</dd>
+                <dt>Email</dt>
+                <dd><a href="mailto:marcus@tatua.com">marcus@tatua.com</a></dd>
+            </dl>
+            <p>Marcus built high-performance systems serving millions of users and brings that expertise to support
+                infrastructure.</p>
+        </dialog>
+
+        <dialog class="team-dialog" id="dialog-jennifer-park" aria-labelledby="dialog-jennifer-park-name">
+            <form method="dialog">
+                <button type="submit" class="dialog-close" aria-label="Close">&times;</button>
+            </form>
+            <img class="team-avatar team-avatar-lg" src="../assets/team/jennifer-park.jpg" alt="" width="120"
+                height="120">
+            <h3 id="dialog-jennifer-park-name">Jennifer Park</h3>
+            <p class="dialog-title">Head of Product</p>
+            <dl>
+                <dt>Background</dt>
+                <dd>Former Product Manager at SupportFlow</dd>
+                <dt>Experience</dt>
+                <dd>Specialist in UX design</dd>
+                <dt>Email</dt>
+                <dd><a href="mailto:jennifer@tatua.com">jennifer@tatua.com</a></dd>
+            </dl>
+            <p>Jennifer designed user experiences for complex enterprise software and focuses on making support tools
+                intuitive.
+            </p>
+        </dialog>
+
+        <dialog class="team-dialog" id="dialog-david-kim" aria-labelledby="dialog-david-kim-name">
+            <form method="dialog">
+                <button type="submit" class="dialog-close" aria-label="Close">&times;</button>
+            </form>
+            <img class="team-avatar team-avatar-lg" src="../assets/team/david-kim.jpg" alt="" width="120" height="120">
+            <h3 id="dialog-david-kim-name">David Kim</h3>
+            <p class="dialog-title">Lead Developer</p>
+            <dl>
+                <dt>Background</dt>
+                <dd>Full-stack engineer, 8 years experience</dd>
+                <dt>Experience</dt>
+                <dd>Open source contributor</dd>
+                <dt>Email</dt>
+                <dd><a href="mailto:david@tatua.com">david@tatua.com</a></dd>
+            </dl>
+            <p>David contributes to major open source projects and ensures our platform follows industry best practices.
+            </p>
+        </dialog>
 
         <section id="company-stats">
             <h2>By the Numbers</h2>
@@ -162,6 +210,7 @@
     </footer>
 
     <script src="settings.js"></script>
+    <script src="team-dialog.js"></script>
 
 </body>
 
